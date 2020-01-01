@@ -3,6 +3,8 @@
 namespace Alkhachatryan\LaravelLoggable;
 
 use App\Exceptions\LoggableFieldsNotSetException;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class Logger
 {
@@ -119,5 +121,48 @@ class Logger
     public function record(){
         if(! $this->should_log)
             return;
+
+        $drivers = $this->config['driver'];
+
+        if(is_string($drivers))
+            $drivers = [$drivers];
+
+        foreach (array_unique($drivers) as $driver){
+            if($driver === 'file')
+                $this->logAddInFile();
+            else
+                $this->logAddInDatabase();
+        }
+    }
+
+    /**
+     * Add a log record in a file.
+     *
+     * @return void
+     */
+    private function logAddInFile(){
+        $model_name = str_replace('\\', '', $this->model_name);
+        $storage_path = $this->config['storage_path']
+            . '/' . $model_name
+            . '/' . date('YF');
+
+        $file_path = $storage_path . '/' . date('d') . '.log';
+
+        if(! File::exists($file_path))
+            mkdir($storage_path , 0755, true);
+
+        File::prepend($file_path, 'asdf');
+    }
+
+    /**
+     * Add a log record in a database.
+     *
+     * @return void
+     */
+    private function logAddInDatabase(){}
+
+
+    private function logFileTemplate($model){
+
     }
 }
