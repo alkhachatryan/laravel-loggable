@@ -1,0 +1,41 @@
+{
+    "name": "alkhachatryan/laravel-loggable",
+    "description": "Laravel Loggable - Log your model changes in multiple ways.",
+    "type": "package",
+    "license": "MIT",
+    "keywords": [
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "Alexey Khachatryan",
+            "email": "info@khachatryan.org"
+        }
+    ],
+    "require": {
+        "illuminate/support": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alkhachatryan\\LaravelLoggable\\": "./src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Alkhachatryan\\LaravelLoggable\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Alkhachatryan\\LaravelLoggable\\LaravelLoggableServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0"
+    }
+}
