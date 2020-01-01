@@ -26,5 +26,7 @@ class LaravelLoggableServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/loggable.php' => config_path('loggable.php'),
         ], 'loggable');
+
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 }
