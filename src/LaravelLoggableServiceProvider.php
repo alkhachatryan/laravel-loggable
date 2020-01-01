@@ -23,6 +23,8 @@ class LaravelLoggableServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__.'/../config/loggable.php' => config_path('loggable.php'),
+        ], 'loggable');
     }
 }
