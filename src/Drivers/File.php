@@ -23,7 +23,7 @@ class File extends LoggerDriver
      * Create a new file if the file is not exist.
      *
      * @return void
-    */
+     */
     public function prepend(){
         $model_name = str_replace('\\', '', $this->model_name);
         $storage_path = $this->config['storage_path']
@@ -44,29 +44,34 @@ class File extends LoggerDriver
      * Get the template for incoming action.
      *
      * @return string
-    */
+     */
     private function getLogTemplate(){
         $user_id = $this->user ? $this->user->id : 'N/A';
 
         $template = now()->toDateTimeString() . PHP_EOL;
 
-        if($this->action === 'create')
-            $template .=  "New model was created by $user_id."
-                          . PHP_EOL . 'Inserted data: '
-                          . PHP_EOL . http_build_query($this->model->toArray(),'', PHP_EOL);
-
-        else if($this->action === 'edit')
-            $template .=  "Model {$this->model->id} was update by $user_id."
+        if($this->action === 'create') {
+            $template .= "New model was created by $user_id."
+                . PHP_EOL . 'Inserted data: '
+                . PHP_EOL . http_build_query($this->model->toArray(), '', PHP_EOL);
+        }
+        else if($this->action === 'edit') {
+            $template .= "Model {$this->model->id} was update by $user_id."
                 . PHP_EOL . 'MODEL BEFORE '
-                . PHP_EOL . http_build_query( array_intersect_key($this->model->getOriginal(),
+                . PHP_EOL . http_build_query(array_intersect_key($this->model->getOriginal(),
                     array_intersect_key($this->model->getChanges(),
-                        array_flip($this->loggable_fields))),'', PHP_EOL)
+                        array_flip($this->loggable_fields))), '', PHP_EOL)
 
                 . PHP_EOL . 'MODEL AFTER '
-                . PHP_EOL . http_build_query( array_intersect_key($this->model->getChanges(),
-                    array_flip($this->loggable_fields)),'', PHP_EOL);
+                . PHP_EOL . http_build_query(array_intersect_key($this->model->getChanges(),
+                    array_flip($this->loggable_fields)), '', PHP_EOL);
 
-            $template .= PHP_EOL . PHP_EOL;
+        }
+        else if($this->action === 'delete') {
+            $template .= "Model {$this->model->id} was deleted by $user_id";
+        }
+
+        $template .= PHP_EOL . PHP_EOL;
 
         return $template;
     }

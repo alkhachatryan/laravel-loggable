@@ -184,9 +184,4 @@ class Logger
      * @return void
      */
     private function logAddInDatabase(){}
-
-
-    private function logFileTemplate($model){
-
-    }
 }
