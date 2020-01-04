@@ -5,20 +5,6 @@ namespace Alkhachatryan\LaravelLoggable\Drivers;
 class File extends LoggerDriver
 {
     /**
-     * Class construct.
-     * Init class properties.
-     *
-     * @param mixed  $model
-     * @param string $action
-     * @param array  $config
-     * @param  \Illuminate\Contracts\Auth\Authenticatable|null $user
-     * @param array  $loggable_fields
-     */
-    public function __construct($model, $action, $config, $user, $loggable_columns){
-        parent::__construct($model, $action, $config, $user, $loggable_columns);
-    }
-
-    /**
      * Prepend the log text to the log file.
      * Create a new file if the file is not exist.
      *
