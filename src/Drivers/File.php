@@ -11,9 +11,11 @@ class File extends LoggerDriver
      * @param mixed  $model
      * @param string $action
      * @param array  $config
+     * @param  \Illuminate\Contracts\Auth\Authenticatable|null $user
+     * @param array  $loggable_fields
      */
-    public function __construct($model, $action, $config){
-        parent::__construct($model, $action, $config);
+    public function __construct($model, $action, $config, $user, $loggable_columns){
+        parent::__construct($model, $action, $config, $user, $loggable_columns);
     }
 
     /**
@@ -30,20 +32,31 @@ class File extends LoggerDriver
 
         $file_path = $storage_path . '/' . date('d') . '.log';
 
-        if(! \Illuminate\Support\Facades\File::exists($file_path))
+        if(! \Illuminate\Support\Facades\File::exists($storage_path))
             mkdir($storage_path , 0755, true);
 
-        File::prepend($file_path, 'asdf');
+        $text = $this->getLogTemplate();
+
+        \Illuminate\Support\Facades\File::prepend($file_path, $text);
     }
 
     /**
      * Get the template for incoming action.
      *
-     * @param string $action
-     * @param mixed  $model
+     * @return string
     */
-    private function templateFor($action, $model){
-        if($action === 'create')
-            return ""
+    private function getLogTemplate(){
+        $user_id = $this->user ? $this->user->id : 'N/A';
+
+        $template = now()->toDateTimeString() . PHP_EOL;
+
+        if($this->action === 'create')
+            $template .=  "New model was created by $user_id."
+                          . PHP_EOL . 'Inserted data: '
+                          . PHP_EOL . http_build_query($this->model->toArray(),'', PHP_EOL);
+
+            $template .= PHP_EOL . PHP_EOL;
+
+        return $template;
     }
 }

@@ -3,6 +3,7 @@
 namespace Alkhachatryan\LaravelLoggable;
 
 use App\Exceptions\LoggableFieldsNotSetException;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,6 +24,13 @@ class Logger
     private $model_name;
 
     /**
+     * Package configuration container.
+     *
+     * @var array
+     */
+    private $config;
+
+    /**
      * The incoming action.
      *
      * @var string
@@ -32,7 +40,7 @@ class Logger
     /**
      * The loggable fields of the model.
      *
-     * @var null|string
+     * @var null|array
      */
     private $loggable_fields;
 
@@ -52,6 +60,21 @@ class Logger
     private $should_log = true;
 
     /**
+     * Logger drivers container.
+     *
+     * @var \stdClass
+    */
+    private $driver;
+
+    /**
+     * User model instance.
+     * Could be null, if the action was made by cron job or some daemon.
+     *
+     * @var \Illuminate\Contracts\Auth\Authenticatable|null
+    */
+    private $user;
+
+    /**
      * Class construct.
      * If there created the object of this class - the model has included Loggable trait.
      *
@@ -67,6 +90,13 @@ class Logger
         $this->config           = config('loggable');
         $this->loggable_actions = $model->loggable_actions;
         $this->loggable_fields  = $model->loggable_fields;
+        $this->user             = Auth::user();
+
+        $this->driver = new \stdClass();
+        $this->driver->file = new \Alkhachatryan\LaravelLoggable\Drivers\File(
+            $this->model, $this->action, $this->config, $this->user, $this->loggable_fields
+        );
+        $this->driver->database = new \Alkhachatryan\LaravelLoggable\Drivers\Database();
 
         $this->prepareData();
     }
@@ -122,6 +152,9 @@ class Logger
         if(! $this->should_log)
             return;
 
+        if($this->action === 'edit' && empty($this->model->getChanges()))
+            return;
+
         $drivers = $this->config['driver'];
 
         if(is_string($drivers))
@@ -141,17 +174,7 @@ class Logger
      * @return void
      */
     private function logAddInFile(){
-        $model_name = str_replace('\\', '', $this->model_name);
-        $storage_path = $this->config['storage_path']
-            . '/' . $model_name
-            . '/' . date('YF');
-
-        $file_path = $storage_path . '/' . date('d') . '.log';
-
-        if(! File::exists($file_path))
-            mkdir($storage_path , 0755, true);
-
-        File::prepend($file_path, 'asdf');
+        $this->driver->file->prepend();
     }
 
     /**
