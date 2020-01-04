@@ -2,10 +2,8 @@
 
 namespace Alkhachatryan\LaravelLoggable;
 
-use App\Exceptions\LoggableFieldsNotSetException;
+use Alkhachatryan\LaravelLoggable\Exceptions\LoggableFieldsNotSetException;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 
 class Logger
 {

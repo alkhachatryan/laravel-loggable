@@ -2,7 +2,7 @@
 
 namespace Alkhachatryan\LaravelLoggable;
 
-use App\Exceptions\LoggableFieldsNotSetException;
+use Alkhachatryan\LaravelLoggable\Exceptions\LoggableFieldsNotSetException;
 
 trait Loggable
 {
