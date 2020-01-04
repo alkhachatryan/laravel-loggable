@@ -23,6 +23,8 @@ class CreateModelLogsTable extends Migration
             $table->timestamp('date');
 
             $table->index(['model_name', 'model_id']);
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
