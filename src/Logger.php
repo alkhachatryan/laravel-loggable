@@ -152,7 +152,8 @@ class Logger
         if(! $this->should_log)
             return;
 
-        if($this->action === 'edit' && empty($this->model->getChanges()))
+        if($this->action === 'edit' && empty(array_intersect_key($this->model->getChanges(),
+                array_flip($this->loggable_fields))))
             return;
 
         $drivers = $this->config['driver'];

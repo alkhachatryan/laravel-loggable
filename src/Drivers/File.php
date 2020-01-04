@@ -55,6 +55,17 @@ class File extends LoggerDriver
                           . PHP_EOL . 'Inserted data: '
                           . PHP_EOL . http_build_query($this->model->toArray(),'', PHP_EOL);
 
+        else if($this->action === 'edit')
+            $template .=  "Model {$this->model->id} was update by $user_id."
+                . PHP_EOL . 'MODEL BEFORE '
+                . PHP_EOL . http_build_query( array_intersect_key($this->model->getOriginal(),
+                    array_intersect_key($this->model->getChanges(),
+                        array_flip($this->loggable_fields))),'', PHP_EOL)
+
+                . PHP_EOL . 'MODEL AFTER '
+                . PHP_EOL . http_build_query( array_intersect_key($this->model->getChanges(),
+                    array_flip($this->loggable_fields)),'', PHP_EOL);
+
             $template .= PHP_EOL . PHP_EOL;
 
         return $template;
