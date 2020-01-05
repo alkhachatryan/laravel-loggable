@@ -15,6 +15,8 @@ It suuports two drivers: File and Database.
 - Facade-based structure to fetch the logs for specific model
 - Much more
 
+![Logs](https://raw.githubusercontent.com/alkhachatryan/laravel-loggable/master/photo.jpg)
+
 # Installation
 ##### Install the package.
 `composer require alkhachatryan/laravel-loggable`
