@@ -12,7 +12,7 @@ return [
      * To use both types - run the migration and check files path.
      *
      * @see https://github.com/alkhachatryan/laravel-loggable/blob/master/readme.md
-    */
+     */
 
     // If you want to use the database and file drivers,
     // Set it as array ['database', 'file']

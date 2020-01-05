@@ -62,7 +62,7 @@ class Logger
      * Logger drivers container.
      *
      * @var \stdClass
-    */
+     */
     private $driver;
 
     /**
@@ -70,7 +70,7 @@ class Logger
      * Could be null, if the action was made by cron job or some daemon.
      *
      * @var \Illuminate\Contracts\Auth\Authenticatable|null
-    */
+     */
     private $user;
 
     /**
@@ -82,14 +82,15 @@ class Logger
      * @param  string $action
      * @return void
      */
-    public function __construct($model, $action){
-        $this->model            = $model;
-        $this->action           = $action;
-        $this->model_name       = get_class($model);
-        $this->config           = config('loggable');
+    public function __construct($model, $action)
+    {
+        $this->model = $model;
+        $this->action = $action;
+        $this->model_name = get_class($model);
+        $this->config = config('loggable');
         $this->loggable_actions = $model->loggable_actions;
-        $this->loggable_fields  = $model->loggable_fields;
-        $this->user             = Auth::user();
+        $this->loggable_fields = $model->loggable_fields;
+        $this->user = Auth::user();
 
         $this->driver = new \stdClass();
         $this->driver->file = new \Alkhachatryan\LaravelLoggable\Drivers\File(
@@ -116,18 +117,19 @@ class Logger
      *
      * @return void
      */
-    private function prepareData(){
-        if($this->action === 'edit' && !$this->model->loggable_fields)
+    private function prepareData()
+    {
+        if ($this->action === 'edit' && ! $this->model->loggable_fields) {
             throw new LoggableFieldsNotSetException($this->model_name);
-
-        if(
+        }
+        if (
             // If there is no specified actions in the model - get from config.
             // If the config field is an array - check if the action in the array.
             // Else if the field is a string - check if the action equals incoming action.
             // If false - not log.
             (! $this->loggable_actions
                 && (
-                    (is_array($this->config['actions']) && !in_array($this->action, $this->config['actions']))
+                    (is_array($this->config['actions']) && ! in_array($this->action, $this->config['actions']))
                     || (is_string($this->config['actions']) && $this->config['actions'] !== $this->action)
                 )
             )
@@ -137,11 +139,12 @@ class Logger
             // Else if the field is a string - check if the action equals incoming action.
             // If false - not log.
             || (
-                (is_array($this->loggable_actions) && !in_array($this->action, $this->loggable_actions))
+                (is_array($this->loggable_actions) && ! in_array($this->action, $this->loggable_actions))
                 || (is_string($this->loggable_actions) && $this->loggable_actions !== $this->action)
             )
-        )
+        ) {
             $this->should_log = false;
+        }
     }
 
     /**
@@ -149,24 +152,29 @@ class Logger
      *
      * @return void
      */
-    public function record(){
-        if(! $this->should_log)
+    public function record()
+    {
+        if (! $this->should_log) {
             return;
+        }
 
-        if($this->action === 'edit' && empty(array_intersect_key($this->model->getChanges(),
-                array_flip($this->loggable_fields))))
+        if ($this->action === 'edit' && empty(array_intersect_key($this->model->getChanges(),
+                array_flip($this->loggable_fields)))) {
             return;
+        }
 
         $drivers = $this->config['driver'];
 
-        if(is_string($drivers))
+        if (is_string($drivers)) {
             $drivers = [$drivers];
+        }
 
-        foreach (array_unique($drivers) as $driver){
-            if($driver === 'file')
+        foreach (array_unique($drivers) as $driver) {
+            if ($driver === 'file') {
                 $this->logAddInFile();
-            else
+            } else {
                 $this->logAddInDatabase();
+            }
 
             event(new Logged($this->model, $this->action, $this->driver, $this->user));
         }
@@ -177,7 +185,8 @@ class Logger
      *
      * @return void
      */
-    private function logAddInFile(){
+    private function logAddInFile()
+    {
         $this->driver->file->prepend();
     }
 
@@ -186,7 +195,8 @@ class Logger
      *
      * @return void
      */
-    private function logAddInDatabase(){
+    private function logAddInDatabase()
+    {
         $this->driver->database->insert();
     }
 }

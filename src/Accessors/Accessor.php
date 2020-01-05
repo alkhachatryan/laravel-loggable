@@ -14,8 +14,9 @@ class Accessor
      * @param int    $limit
      *
      * @return Collection
-    */
-    public function model($model_name, $limit = 50){
+     */
+    public function model($model_name, $limit = 50)
+    {
         return LoggableModel::whereModelName($model_name)->orderBy('id', 'DESC')->paginate($limit);
     }
 }
