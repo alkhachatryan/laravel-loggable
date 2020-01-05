@@ -15,18 +15,15 @@ trait Loggable
     {
         parent::boot();
 
-        self::created(function($model)
-        {
+        self::created(function ($model) {
             self::log($model, 'create');
         });
 
-        self::updated(function($model)
-        {
+        self::updated(function ($model) {
             self::log($model, 'edit');
         });
 
-        self::deleted(function($model)
-        {
+        self::deleted(function ($model) {
             self::log($model, 'delete');
         });
     }
@@ -38,8 +35,9 @@ trait Loggable
      * @param mixed $model
      * @param string $action
      * @return void
-    */
-    private static function log($model, $action){
+     */
+    private static function log($model, $action)
+    {
         $logger = new Logger($model, $action);
         $logger->record();
     }

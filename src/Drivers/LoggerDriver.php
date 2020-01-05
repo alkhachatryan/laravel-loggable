@@ -57,12 +57,13 @@ abstract class LoggerDriver
      * @param  \Illuminate\Contracts\Auth\Authenticatable|null $user
      * @param array  $loggable_fields
      */
-    public function __construct($model, $action, $config, $user, $loggable_fields){
-        $this->model_name      = get_class($model);
-        $this->model           = $model;
-        $this->action          = $action;
-        $this->config          = $config;
+    public function __construct($model, $action, $config, $user, $loggable_fields)
+    {
+        $this->model_name = get_class($model);
+        $this->model = $model;
+        $this->action = $action;
+        $this->config = $config;
         $this->loggable_fields = $loggable_fields;
-        $this->user            = $user;
+        $this->user = $user;
     }
 }

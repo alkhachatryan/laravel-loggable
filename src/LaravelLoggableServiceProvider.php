@@ -14,7 +14,7 @@ class LaravelLoggableServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('loggable',function(){
+        $this->app->bind('loggable', function () {
             return new Accessor();
         });
     }

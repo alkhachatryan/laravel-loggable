@@ -47,9 +47,9 @@ class Logged
      */
     public function __construct($model, $action, $driver, $user = null)
     {
-        $this->model  = $model;
+        $this->model = $model;
         $this->action = $action;
         $this->driver = $driver;
-        $this->user   = $user;
+        $this->user = $user;
     }
 }
