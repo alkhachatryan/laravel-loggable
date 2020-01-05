@@ -3,6 +3,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/alkhachatryan/laravel-loggable.svg?style=flat-square)](https://packagist.org/packages/alkhachatryan/laravel-loggable)
 ![Packagist Version](https://img.shields.io/packagist/v/alkhachatryan/laravel-loggable)
+![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/alkhachatryan/laravel-loggable)
 
 Laravel Loggable is a package for eloquent models, which will monitor the changes on the models and log.
 It suuports two drivers: File and Database.
