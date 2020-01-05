@@ -2,6 +2,7 @@
 
 namespace Alkhachatryan\LaravelLoggable;
 
+use Alkhachatryan\LaravelLoggable\Events\Logged;
 use Alkhachatryan\LaravelLoggable\Exceptions\LoggableFieldsNotSetException;
 use Illuminate\Support\Facades\Auth;
 
@@ -166,6 +167,8 @@ class Logger
                 $this->logAddInFile();
             else
                 $this->logAddInDatabase();
+
+            event(new Logged($this->model, $this->action, $this->driver, $this->user));
         }
     }
 
