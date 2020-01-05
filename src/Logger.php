@@ -94,7 +94,9 @@ class Logger
         $this->driver->file = new \Alkhachatryan\LaravelLoggable\Drivers\File(
             $this->model, $this->action, $this->config, $this->user, $this->loggable_fields
         );
-        $this->driver->database = new \Alkhachatryan\LaravelLoggable\Drivers\Database();
+        $this->driver->database = new \Alkhachatryan\LaravelLoggable\Drivers\Database(
+            $this->model, $this->action, $this->config, $this->user, $this->loggable_fields
+        );
 
         $this->prepareData();
     }
@@ -181,5 +183,7 @@ class Logger
      *
      * @return void
      */
-    private function logAddInDatabase(){}
+    private function logAddInDatabase(){
+        $this->driver->database->insert();
+    }
 }

@@ -2,21 +2,37 @@
 
 namespace Alkhachatryan\LaravelLoggable\Drivers;
 
-class Database
+use Alkhachatryan\LaravelLoggable\Models\LoggableModel;
+
+class Database extends LoggerDriver
 {
-    public function prepend(){
-        $model_name = str_replace('\\', '', $this->model_name);
-        $storage_path = $this->config['storage_path']
-            . '/' . $model_name
-            . '/' . date('YF');
+    /**
+     * Insert the log record into table.
+     *
+     * @return void
+    */
+    public function insert(){
+        $user_id = $this->user ? $this->user->id : null;
+        $data    = null;
 
-        $file_path = $storage_path . '/' . date('d') . '.log';
+        if($this->action === 'create')
+            $data = $this->model;
 
-        if(! \Illuminate\Support\Facades\File::exists($file_path))
-            mkdir($storage_path , 0755, true);
+        else if($this->action === 'edit')
+            $data = [
+                'before' => array_intersect_key($this->model->getOriginal(),
+                    array_intersect_key($this->model->getChanges(),
+                        array_flip($this->loggable_fields))),
+                'after'  => array_intersect_key($this->model->getChanges(),
+                    array_flip($this->loggable_fields))
+            ];
 
-        $text = "Created $this->model_name model";
-
-        File::prepend($file_path, 'asdf');
+        LoggableModel::create([
+            "user_id" => $user_id,
+            "model_name" => $this->model_name,
+            "model_id" => $this->model->id,
+            "action" => $this->action,
+            "data" => json_encode($data)
+        ]);
     }
 }
