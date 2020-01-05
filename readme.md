@@ -1,4 +1,4 @@
-# laravel-loggable
+# Laravel Loggable - Log you model changes
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/alkhachatryan/laravel-loggable.svg?style=flat-square)](https://packagist.org/packages/alkhachatryan/laravel-loggable)
