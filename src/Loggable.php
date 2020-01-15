@@ -13,8 +13,6 @@ trait Loggable
      */
     public static function bootLoggable()
     {
-        parent::boot();
-
         self::created(function ($model) {
             self::log($model, 'create');
         });
