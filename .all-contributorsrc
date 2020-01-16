@@ -1,5 +1,7 @@
 {
-  "files": ["README.md"],
+  "files": [
+    "README.md"
+  ],
   "imageSize": 100,
   "contributorsPerLine": 7,
   "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square)](#contributors)",
@@ -11,6 +13,20 @@
       "link": "[<%= symbol %>](<%= url %> \"<%= description %>\"),"
     }
   },
-  "skipCi": "true",
-  "contributors": []
+  "skipCi": true,
+  "contributors": [
+    {
+      "login": "imliam",
+      "name": "Liam Hammett",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4326337?v=4",
+      "profile": "https://liamhammett.com",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "projectName": "laravel-loggable",
+  "projectOwner": "alkhachatryan",
+  "repoType": "github",
+  "repoHost": "https://github.com"
 }
