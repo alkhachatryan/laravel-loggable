@@ -77,7 +77,8 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 - [Alexey Khachatryan](https://github.com/alkhachatryan)
 - [All Contributors](https://github.com/alkhachatryan/laravel-loggable/contributors)
-
+<!-- ALL-CONTRIBUTORS-LIST:START -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 # Todo
 Tests!!! Tests!!! Tests!!!
 
