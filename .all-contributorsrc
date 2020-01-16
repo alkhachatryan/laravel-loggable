@@ -15,20 +15,20 @@
   },
   "skipCi": true,
   "contributors": [
-    {
-      "login": "imliam",
-      "name": "Liam Hammett",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/4326337?v=4",
-      "profile": "https://liamhammett.com",
+   {
+      "login": "alkhachatryan",
+      "name": "Alexey",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/22774727?v=4",
+      "profile": "https://khachatryan.org/",
       "contributions": [
         "code"
       ]
     },
     {
-      "login": "alkhachatryan",
-      "name": "Alexey",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/22774727?v=4",
-      "profile": "https://khachatryan.org/",
+      "login": "imliam",
+      "name": "Liam Hammett",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4326337?v=4",
+      "profile": "https://liamhammett.com",
       "contributions": [
         "code"
       ]
