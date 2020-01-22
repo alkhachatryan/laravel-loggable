@@ -1,7 +1,6 @@
 # Laravel Loggable - Log you model changes
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Total Downloads](https://img.shields.io/packagist/dt/alkhachatryan/laravel-loggable.svg?style=flat-square)](https://packagist.org/packages/alkhachatryan/laravel-loggable)
 ![Packagist Version](https://img.shields.io/packagist/v/alkhachatryan/laravel-loggable)
 ![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/alkhachatryan/laravel-loggable)
 
@@ -77,7 +76,19 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 - [Alexey Khachatryan](https://github.com/alkhachatryan)
 - [All Contributors](https://github.com/alkhachatryan/laravel-loggable/contributors)
+<!-- ALL-CONTRIBUTORS-LIST:START -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://liamhammett.com"><img src="https://avatars0.githubusercontent.com/u/4326337?v=4" width="100px;" alt=""/><br /><sub><b>Liam Hammett</b></sub></a></td>
+    <td align="center"><a href="https://khachatryan.org/"><img src="https://avatars1.githubusercontent.com/u/22774727?v=4" width="100px;" alt=""/><br /><sub><b>Alexey</b></sub></a></td>
+  </tr>
+</table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 # Todo
 Tests!!! Tests!!! Tests!!!
 

@@ -15,6 +15,15 @@
   },
   "skipCi": true,
   "contributors": [
+   {
+      "login": "alkhachatryan",
+      "name": "Alexey",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/22774727?v=4",
+      "profile": "https://khachatryan.org/",
+      "contributions": [
+        "code"
+      ]
+    },
     {
       "login": "imliam",
       "name": "Liam Hammett",
