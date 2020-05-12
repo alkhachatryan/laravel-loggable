@@ -5,7 +5,7 @@
 ![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/alkhachatryan/laravel-loggable)
 
 Laravel Loggable is a package for eloquent models, which will monitor the changes on the models and log.
-It suuports two drivers: File and Database.
+It supports two drivers: File and Database.
 
 # Features
 - High-configurable
