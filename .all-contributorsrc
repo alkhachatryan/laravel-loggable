@@ -15,7 +15,7 @@
   },
   "skipCi": true,
   "contributors": [
-   {
+    {
       "login": "alkhachatryan",
       "name": "Alexey",
       "avatar_url": "https://avatars1.githubusercontent.com/u/22774727?v=4",
@@ -29,6 +29,15 @@
       "name": "Liam Hammett",
       "avatar_url": "https://avatars0.githubusercontent.com/u/4326337?v=4",
       "profile": "https://liamhammett.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "deligoez",
+      "name": "Yunus Emre Deligöz",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/3030815?v=4",
+      "profile": "https://github.com/deligoez",
       "contributions": [
         "code"
       ]
