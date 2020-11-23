@@ -72,24 +72,6 @@ You can use the event *Alkhachatryan\LaravelLoggable\Events\Logged* in pair with
 # Changelog
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
-# Credits
-
-- [Alexey Khachatryan](https://github.com/alkhachatryan)
-- [All Contributors](https://github.com/alkhachatryan/laravel-loggable/contributors)
-<!-- ALL-CONTRIBUTORS-LIST:START -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://khachatryan.org/"><img src="https://avatars1.githubusercontent.com/u/22774727?v=4" width="100px;" alt=""/><br /><sub><b>Alexey</b></sub></a></td>
-    <td align="center"><a href="https://liamhammett.com"><img src="https://avatars0.githubusercontent.com/u/4326337?v=4" width="100px;" alt=""/><br /><sub><b>Liam Hammett</b></sub></a></td>
-    <td align="center"><a href="https://github.com/deligoez"><img src="https://avatars1.githubusercontent.com/u/3030815?v=4" width="100px;" alt=""/><br /><sub><b>Yunus Emre Deligöz</b></sub></a></td>
-  </tr>
-</table>
-
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 # Todo
 Tests!!! Tests!!! Tests!!!
 
