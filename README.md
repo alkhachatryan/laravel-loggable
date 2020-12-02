@@ -3,6 +3,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 ![Packagist Version](https://img.shields.io/packagist/v/alkhachatryan/laravel-loggable)
 ![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/alkhachatryan/laravel-loggable)
+[![Total Downloads][ico-downloads]][link-downloads]
 ![](https://komarev.com/ghpvc/?username=alkhachatryan-laravel-loggable&label=Repo+views&color=brightgreen&style=flat-square)
 
 Laravel Loggable is a package for eloquent models, which will monitor the changes on the models and log.
@@ -81,3 +82,6 @@ If you discover any security-related issues, please email info@khachatryan.org i
 
 # License
 The MIT License (MIT). Please see [License File](/LICENSE.md) for more information.
+
+[ico-downloads]: https://img.shields.io/packagist/dt/alkhachatryan/laravel-loggable.svg?style=flat-square&color=brightgreen
+[link-downloads]: https://packagist.org/packages/alkhachatryan/laravel-loggable
